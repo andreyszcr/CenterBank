@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CentroBankModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Encargados">
+    <Key>
+      <PropertyRef Name="IdEncargado" />
+    </Key>
+    <Property Name="IdEncargado" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Apellidos" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Nacimiento" Type="date" Nullable="false" />
+    <Property Name="Nacionalidad" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="IdProvincia" Type="int" Nullable="false" />
+    <Property Name="Telefono" Type="int" Nullable="false" />
+    <Property Name="Correo" Type="varchar" MaxLength="200" />
+    <Property Name="IdRol" Type="int" Nullable="false" />
+    <Property Name="Contrasena" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EstadoSolicitud">
+    <Key>
+      <PropertyRef Name="IdEstado" />
+    </Key>
+    <Property Name="IdEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Estado" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PosicionPagina">
+    <Key>
+      <PropertyRef Name="IdPosicion" />
+    </Key>
+    <Property Name="IdPosicion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdUsuario" Type="int" Nullable="false" />
+    <Property Name="TipoCreditos" Type="int" Nullable="false" />
+    <Property Name="Posicionamiento" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Provincias">
+    <Key>
+      <PropertyRef Name="IdProvincia" />
+    </Key>
+    <Property Name="IdProvincia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Provincia" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RecepcionSolicitudes">
+    <Key>
+      <PropertyRef Name="IdRecepcion" />
+    </Key>
+    <Property Name="IdRecepcion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDSolicitud" Type="int" Nullable="false" />
+    <Property Name="IDEncargado" Type="int" />
+    <Property Name="FechaRevision" Type="date" />
+    <Property Name="IdEstado" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Name="IdRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Rol" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SolicitudCredito">
+    <Key>
+      <PropertyRef Name="IDSolicitud" />
+    </Key>
+    <Property Name="IDSolicitud" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdTipoIdentificacion" Type="int" Nullable="false" />
+    <Property Name="Identificacion" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Apellidos" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="IdTipoCreditos" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="date" Nullable="false" />
+    <Property Name="Correo" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Monto" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tendencias">
+    <Key>
+      <PropertyRef Name="IDTendencia" />
+    </Key>
+    <Property Name="IDTendencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tendencia" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="IdTipoCreditos" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoCambio">
+    <Key>
+      <PropertyRef Name="IdTipoCambio" />
+    </Key>
+    <Property Name="IdTipoCambio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Moneda" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Compra" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Venta" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="FechaActualizacion" Type="date" Nullable="false" />
+    <Property Name="IdEncargado" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoCreditos">
+    <Key>
+      <PropertyRef Name="IdTipoCreditos" />
+    </Key>
+    <Property Name="IdTipoCreditos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TipoCreditos" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoIdentificacion">
+    <Key>
+      <PropertyRef Name="IdTipoIdentificacion" />
+    </Key>
+    <Property Name="IdTipoIdentificacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TipoIdentificacion" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="int" Nullable="false" />
+    <Property Name="IdTipoIdentificacion" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Apellidos" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Nacimiento" Type="date" Nullable="false" />
+    <Property Name="Nacionalidad" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="IdProvincia" Type="int" Nullable="false" />
+    <Property Name="Telefono" Type="int" Nullable="false" />
+    <Property Name="Correo" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="VisitaPagina">
+    <Key>
+      <PropertyRef Name="IDvisita" />
+    </Key>
+    <Property Name="IDvisita" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="date" Nullable="false" />
+    <Property Name="IdTipoCreditos" Type="int" Nullable="false" />
+    <Property Name="CantidadVisitada" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Encargados_Provincias">
+    <End Role="Provincias" Type="Self.Provincias" Multiplicity="1" />
+    <End Role="Encargados" Type="Self.Encargados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Provincias">
+        <PropertyRef Name="IdProvincia" />
+      </Principal>
+      <Dependent Role="Encargados">
+        <PropertyRef Name="IdProvincia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Encargados_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="Encargados" Type="Self.Encargados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="IdRol" />
+      </Principal>
+      <Dependent Role="Encargados">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PosicionPagina_TipoCreditos">
+    <End Role="TipoCreditos" Type="Self.TipoCreditos" Multiplicity="1" />
+    <End Role="PosicionPagina" Type="Self.PosicionPagina" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoCreditos">
+        <PropertyRef Name="IdTipoCreditos" />
+      </Principal>
+      <Dependent Role="PosicionPagina">
+        <PropertyRef Name="TipoCreditos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PosicionPagina_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="PosicionPagina" Type="Self.PosicionPagina" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="PosicionPagina">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RecepcionSolicitudes_EstadoSolicitud">
+    <End Role="EstadoSolicitud" Type="Self.EstadoSolicitud" Multiplicity="1" />
+    <End Role="RecepcionSolicitudes" Type="Self.RecepcionSolicitudes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstadoSolicitud">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="RecepcionSolicitudes">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RecepcionSolicitudes_SolicitudCredito">
+    <End Role="SolicitudCredito" Type="Self.SolicitudCredito" Multiplicity="1" />
+    <End Role="RecepcionSolicitudes" Type="Self.RecepcionSolicitudes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SolicitudCredito">
+        <PropertyRef Name="IDSolicitud" />
+      </Principal>
+      <Dependent Role="RecepcionSolicitudes">
+        <PropertyRef Name="IDSolicitud" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SolicitudCredito_TipoCreditos">
+    <End Role="TipoCreditos" Type="Self.TipoCreditos" Multiplicity="1" />
+    <End Role="SolicitudCredito" Type="Self.SolicitudCredito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoCreditos">
+        <PropertyRef Name="IdTipoCreditos" />
+      </Principal>
+      <Dependent Role="SolicitudCredito">
+        <PropertyRef Name="IdTipoCreditos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SolicitudCredito_TipoIdentificacion">
+    <End Role="TipoIdentificacion" Type="Self.TipoIdentificacion" Multiplicity="1" />
+    <End Role="SolicitudCredito" Type="Self.SolicitudCredito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoIdentificacion">
+        <PropertyRef Name="IdTipoIdentificacion" />
+      </Principal>
+      <Dependent Role="SolicitudCredito">
+        <PropertyRef Name="IdTipoIdentificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tendencias_TipoCreditos">
+    <End Role="TipoCreditos" Type="Self.TipoCreditos" Multiplicity="1" />
+    <End Role="Tendencias" Type="Self.Tendencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoCreditos">
+        <PropertyRef Name="IdTipoCreditos" />
+      </Principal>
+      <Dependent Role="Tendencias">
+        <PropertyRef Name="IdTipoCreditos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TipoCambio_Encargados">
+    <End Role="Encargados" Type="Self.Encargados" Multiplicity="1" />
+    <End Role="TipoCambio" Type="Self.TipoCambio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Encargados">
+        <PropertyRef Name="IdEncargado" />
+      </Principal>
+      <Dependent Role="TipoCambio">
+        <PropertyRef Name="IdEncargado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Provincias">
+    <End Role="Provincias" Type="Self.Provincias" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Provincias">
+        <PropertyRef Name="IdProvincia" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="IdProvincia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_TipoIdentificacion">
+    <End Role="TipoIdentificacion" Type="Self.TipoIdentificacion" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoIdentificacion">
+        <PropertyRef Name="IdTipoIdentificacion" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="IdTipoIdentificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VisitaPagina_TipoCreditos">
+    <End Role="TipoCreditos" Type="Self.TipoCreditos" Multiplicity="1" />
+    <End Role="VisitaPagina" Type="Self.VisitaPagina" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoCreditos">
+        <PropertyRef Name="IdTipoCreditos" />
+      </Principal>
+      <Dependent Role="VisitaPagina">
+        <PropertyRef Name="IdTipoCreditos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CentroBankModelStoreContainer">
+    <EntitySet Name="Encargados" EntityType="Self.Encargados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EstadoSolicitud" EntityType="Self.EstadoSolicitud" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PosicionPagina" EntityType="Self.PosicionPagina" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Provincias" EntityType="Self.Provincias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RecepcionSolicitudes" EntityType="Self.RecepcionSolicitudes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SolicitudCredito" EntityType="Self.SolicitudCredito" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tendencias" EntityType="Self.Tendencias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoCambio" EntityType="Self.TipoCambio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoCreditos" EntityType="Self.TipoCreditos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoIdentificacion" EntityType="Self.TipoIdentificacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VisitaPagina" EntityType="Self.VisitaPagina" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Encargados_Provincias" Association="Self.FK_Encargados_Provincias">
+      <End Role="Provincias" EntitySet="Provincias" />
+      <End Role="Encargados" EntitySet="Encargados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Encargados_Roles" Association="Self.FK_Encargados_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Encargados" EntitySet="Encargados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PosicionPagina_TipoCreditos" Association="Self.FK_PosicionPagina_TipoCreditos">
+      <End Role="TipoCreditos" EntitySet="TipoCreditos" />
+      <End Role="PosicionPagina" EntitySet="PosicionPagina" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PosicionPagina_Usuario" Association="Self.FK_PosicionPagina_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="PosicionPagina" EntitySet="PosicionPagina" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RecepcionSolicitudes_EstadoSolicitud" Association="Self.FK_RecepcionSolicitudes_EstadoSolicitud">
+      <End Role="EstadoSolicitud" EntitySet="EstadoSolicitud" />
+      <End Role="RecepcionSolicitudes" EntitySet="RecepcionSolicitudes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RecepcionSolicitudes_SolicitudCredito" Association="Self.FK_RecepcionSolicitudes_SolicitudCredito">
+      <End Role="SolicitudCredito" EntitySet="SolicitudCredito" />
+      <End Role="RecepcionSolicitudes" EntitySet="RecepcionSolicitudes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SolicitudCredito_TipoCreditos" Association="Self.FK_SolicitudCredito_TipoCreditos">
+      <End Role="TipoCreditos" EntitySet="TipoCreditos" />
+      <End Role="SolicitudCredito" EntitySet="SolicitudCredito" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SolicitudCredito_TipoIdentificacion" Association="Self.FK_SolicitudCredito_TipoIdentificacion">
+      <End Role="TipoIdentificacion" EntitySet="TipoIdentificacion" />
+      <End Role="SolicitudCredito" EntitySet="SolicitudCredito" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tendencias_TipoCreditos" Association="Self.FK_Tendencias_TipoCreditos">
+      <End Role="TipoCreditos" EntitySet="TipoCreditos" />
+      <End Role="Tendencias" EntitySet="Tendencias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TipoCambio_Encargados" Association="Self.FK_TipoCambio_Encargados">
+      <End Role="Encargados" EntitySet="Encargados" />
+      <End Role="TipoCambio" EntitySet="TipoCambio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Provincias" Association="Self.FK_Usuario_Provincias">
+      <End Role="Provincias" EntitySet="Provincias" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_TipoIdentificacion" Association="Self.FK_Usuario_TipoIdentificacion">
+      <End Role="TipoIdentificacion" EntitySet="TipoIdentificacion" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VisitaPagina_TipoCreditos" Association="Self.FK_VisitaPagina_TipoCreditos">
+      <End Role="TipoCreditos" EntitySet="TipoCreditos" />
+      <End Role="VisitaPagina" EntitySet="VisitaPagina" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

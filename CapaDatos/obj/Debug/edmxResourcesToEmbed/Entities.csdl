@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CentroBankModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Encargados">
+    <Key>
+      <PropertyRef Name="IdEncargado" />
+    </Key>
+    <Property Name="IdEncargado" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellidos" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nacimiento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Nacionalidad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdProvincia" Type="Int32" Nullable="false" />
+    <Property Name="Telefono" Type="Int32" Nullable="false" />
+    <Property Name="Correo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IdRol" Type="Int32" Nullable="false" />
+    <Property Name="Contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Provincias" Relationship="Self.FK_Encargados_Provincias" FromRole="Encargados" ToRole="Provincias" />
+    <NavigationProperty Name="Roles" Relationship="Self.FK_Encargados_Roles" FromRole="Encargados" ToRole="Roles" />
+    <NavigationProperty Name="TipoCambio" Relationship="Self.FK_TipoCambio_Encargados" FromRole="Encargados" ToRole="TipoCambio" />
+  </EntityType>
+  <EntityType Name="EstadoSolicitud">
+    <Key>
+      <PropertyRef Name="IdEstado" />
+    </Key>
+    <Property Name="IdEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="RecepcionSolicitudes" Relationship="Self.FK_RecepcionSolicitudes_EstadoSolicitud" FromRole="EstadoSolicitud" ToRole="RecepcionSolicitudes" />
+  </EntityType>
+  <EntityType Name="PosicionPagina">
+    <Key>
+      <PropertyRef Name="IdPosicion" />
+    </Key>
+    <Property Name="IdPosicion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <Property Name="TipoCreditos" Type="Int32" Nullable="false" />
+    <Property Name="Posicionamiento" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TipoCreditos1" Relationship="Self.FK_PosicionPagina_TipoCreditos" FromRole="PosicionPagina" ToRole="TipoCreditos" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK_PosicionPagina_Usuario" FromRole="PosicionPagina" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Provincias">
+    <Key>
+      <PropertyRef Name="IdProvincia" />
+    </Key>
+    <Property Name="IdProvincia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Provincia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Encargados" Relationship="Self.FK_Encargados_Provincias" FromRole="Provincias" ToRole="Encargados" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_Provincias" FromRole="Provincias" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="RecepcionSolicitudes">
+    <Key>
+      <PropertyRef Name="IdRecepcion" />
+    </Key>
+    <Property Name="IdRecepcion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDSolicitud" Type="Int32" Nullable="false" />
+    <Property Name="IDEncargado" Type="Int32" />
+    <Property Name="FechaRevision" Type="DateTime" Precision="0" />
+    <Property Name="IdEstado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EstadoSolicitud" Relationship="Self.FK_RecepcionSolicitudes_EstadoSolicitud" FromRole="RecepcionSolicitudes" ToRole="EstadoSolicitud" />
+    <NavigationProperty Name="SolicitudCredito" Relationship="Self.FK_RecepcionSolicitudes_SolicitudCredito" FromRole="RecepcionSolicitudes" ToRole="SolicitudCredito" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Name="IdRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Rol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Encargados" Relationship="Self.FK_Encargados_Roles" FromRole="Roles" ToRole="Encargados" />
+  </EntityType>
+  <EntityType Name="SolicitudCredito">
+    <Key>
+      <PropertyRef Name="IDSolicitud" />
+    </Key>
+    <Property Name="IDSolicitud" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdTipoIdentificacion" Type="Int32" Nullable="false" />
+    <Property Name="Identificacion" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellidos" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdTipoCreditos" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Correo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Monto" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="RecepcionSolicitudes" Relationship="Self.FK_RecepcionSolicitudes_SolicitudCredito" FromRole="SolicitudCredito" ToRole="RecepcionSolicitudes" />
+    <NavigationProperty Name="TipoCreditos" Relationship="Self.FK_SolicitudCredito_TipoCreditos" FromRole="SolicitudCredito" ToRole="TipoCreditos" />
+    <NavigationProperty Name="TipoIdentificacion" Relationship="Self.FK_SolicitudCredito_TipoIdentificacion" FromRole="SolicitudCredito" ToRole="TipoIdentificacion" />
+  </EntityType>
+  <EntityType Name="Tendencias">
+    <Key>
+      <PropertyRef Name="IDTendencia" />
+    </Key>
+    <Property Name="IDTendencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tendencia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdTipoCreditos" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TipoCreditos" Relationship="Self.FK_Tendencias_TipoCreditos" FromRole="Tendencias" ToRole="TipoCreditos" />
+  </EntityType>
+  <EntityType Name="TipoCambio">
+    <Key>
+      <PropertyRef Name="IdTipoCambio" />
+    </Key>
+    <Property Name="IdTipoCambio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Moneda" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Compra" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Venta" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="FechaActualizacion" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdEncargado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Encargados" Relationship="Self.FK_TipoCambio_Encargados" FromRole="TipoCambio" ToRole="Encargados" />
+  </EntityType>
+  <EntityType Name="TipoCreditos">
+    <Key>
+      <PropertyRef Name="IdTipoCreditos" />
+    </Key>
+    <Property Name="IdTipoCreditos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TipoCreditos1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PosicionPagina" Relationship="Self.FK_PosicionPagina_TipoCreditos" FromRole="TipoCreditos" ToRole="PosicionPagina" />
+    <NavigationProperty Name="SolicitudCredito" Relationship="Self.FK_SolicitudCredito_TipoCreditos" FromRole="TipoCreditos" ToRole="SolicitudCredito" />
+    <NavigationProperty Name="Tendencias" Relationship="Self.FK_Tendencias_TipoCreditos" FromRole="TipoCreditos" ToRole="Tendencias" />
+    <NavigationProperty Name="VisitaPagina" Relationship="Self.FK_VisitaPagina_TipoCreditos" FromRole="TipoCreditos" ToRole="VisitaPagina" />
+  </EntityType>
+  <EntityType Name="TipoIdentificacion">
+    <Key>
+      <PropertyRef Name="IdTipoIdentificacion" />
+    </Key>
+    <Property Name="IdTipoIdentificacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TipoIdentificacion1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="SolicitudCredito" Relationship="Self.FK_SolicitudCredito_TipoIdentificacion" FromRole="TipoIdentificacion" ToRole="SolicitudCredito" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_TipoIdentificacion" FromRole="TipoIdentificacion" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <Property Name="IdTipoIdentificacion" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellidos" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nacimiento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Nacionalidad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdProvincia" Type="Int32" Nullable="false" />
+    <Property Name="Telefono" Type="Int32" Nullable="false" />
+    <Property Name="Correo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PosicionPagina" Relationship="Self.FK_PosicionPagina_Usuario" FromRole="Usuario" ToRole="PosicionPagina" />
+    <NavigationProperty Name="Provincias" Relationship="Self.FK_Usuario_Provincias" FromRole="Usuario" ToRole="Provincias" />
+    <NavigationProperty Name="TipoIdentificacion" Relationship="Self.FK_Usuario_TipoIdentificacion" FromRole="Usuario" ToRole="TipoIdentificacion" />
+  </EntityType>
+  <EntityType Name="VisitaPagina">
+    <Key>
+      <PropertyRef Name="IDvisita" />
+    </Key>
+    <Property Name="IDvisita" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdTipoCreditos" Type="Int32" Nullable="false" />
+    <Property Name="CantidadVisitada" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TipoCreditos" Relationship="Self.FK_VisitaPagina_TipoCreditos" FromRole="VisitaPagina" ToRole="TipoCreditos" />
+  </EntityType>
+  <Association Name="FK_Encargados_Provincias">
+    <End Role="Provincias" Type="Self.Provincias" Multiplicity="1" />
+    <End Role="Encargados" Type="Self.Encargados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Provincias">
+        <PropertyRef Name="IdProvincia" />
+      </Principal>
+      <Dependent Role="Encargados">
+        <PropertyRef Name="IdProvincia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Encargados_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="Encargados" Type="Self.Encargados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="IdRol" />
+      </Principal>
+      <Dependent Role="Encargados">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TipoCambio_Encargados">
+    <End Role="Encargados" Type="Self.Encargados" Multiplicity="1" />
+    <End Role="TipoCambio" Type="Self.TipoCambio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Encargados">
+        <PropertyRef Name="IdEncargado" />
+      </Principal>
+      <Dependent Role="TipoCambio">
+        <PropertyRef Name="IdEncargado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RecepcionSolicitudes_EstadoSolicitud">
+    <End Role="EstadoSolicitud" Type="Self.EstadoSolicitud" Multiplicity="1" />
+    <End Role="RecepcionSolicitudes" Type="Self.RecepcionSolicitudes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstadoSolicitud">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="RecepcionSolicitudes">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PosicionPagina_TipoCreditos">
+    <End Role="TipoCreditos" Type="Self.TipoCreditos" Multiplicity="1" />
+    <End Role="PosicionPagina" Type="Self.PosicionPagina" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoCreditos">
+        <PropertyRef Name="IdTipoCreditos" />
+      </Principal>
+      <Dependent Role="PosicionPagina">
+        <PropertyRef Name="TipoCreditos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PosicionPagina_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="PosicionPagina" Type="Self.PosicionPagina" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="PosicionPagina">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Provincias">
+    <End Role="Provincias" Type="Self.Provincias" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Provincias">
+        <PropertyRef Name="IdProvincia" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="IdProvincia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RecepcionSolicitudes_SolicitudCredito">
+    <End Role="SolicitudCredito" Type="Self.SolicitudCredito" Multiplicity="1" />
+    <End Role="RecepcionSolicitudes" Type="Self.RecepcionSolicitudes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SolicitudCredito">
+        <PropertyRef Name="IDSolicitud" />
+      </Principal>
+      <Dependent Role="RecepcionSolicitudes">
+        <PropertyRef Name="IDSolicitud" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SolicitudCredito_TipoCreditos">
+    <End Role="TipoCreditos" Type="Self.TipoCreditos" Multiplicity="1" />
+    <End Role="SolicitudCredito" Type="Self.SolicitudCredito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoCreditos">
+        <PropertyRef Name="IdTipoCreditos" />
+      </Principal>
+      <Dependent Role="SolicitudCredito">
+        <PropertyRef Name="IdTipoCreditos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SolicitudCredito_TipoIdentificacion">
+    <End Role="TipoIdentificacion" Type="Self.TipoIdentificacion" Multiplicity="1" />
+    <End Role="SolicitudCredito" Type="Self.SolicitudCredito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoIdentificacion">
+        <PropertyRef Name="IdTipoIdentificacion" />
+      </Principal>
+      <Dependent Role="SolicitudCredito">
+        <PropertyRef Name="IdTipoIdentificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tendencias_TipoCreditos">
+    <End Role="TipoCreditos" Type="Self.TipoCreditos" Multiplicity="1" />
+    <End Role="Tendencias" Type="Self.Tendencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoCreditos">
+        <PropertyRef Name="IdTipoCreditos" />
+      </Principal>
+      <Dependent Role="Tendencias">
+        <PropertyRef Name="IdTipoCreditos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VisitaPagina_TipoCreditos">
+    <End Role="TipoCreditos" Type="Self.TipoCreditos" Multiplicity="1" />
+    <End Role="VisitaPagina" Type="Self.VisitaPagina" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoCreditos">
+        <PropertyRef Name="IdTipoCreditos" />
+      </Principal>
+      <Dependent Role="VisitaPagina">
+        <PropertyRef Name="IdTipoCreditos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_TipoIdentificacion">
+    <End Role="TipoIdentificacion" Type="Self.TipoIdentificacion" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoIdentificacion">
+        <PropertyRef Name="IdTipoIdentificacion" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="IdTipoIdentificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CentroBankEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Encargados" EntityType="Self.Encargados" />
+    <EntitySet Name="EstadoSolicitud" EntityType="Self.EstadoSolicitud" />
+    <EntitySet Name="PosicionPagina" EntityType="Self.PosicionPagina" />
+    <EntitySet Name="Provincias" EntityType="Self.Provincias" />
+    <EntitySet Name="RecepcionSolicitudes" EntityType="Self.RecepcionSolicitudes" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" />
+    <EntitySet Name="SolicitudCredito" EntityType="Self.SolicitudCredito" />
+    <EntitySet Name="Tendencias" EntityType="Self.Tendencias" />
+    <EntitySet Name="TipoCambio" EntityType="Self.TipoCambio" />
+    <EntitySet Name="TipoCreditos" EntityType="Self.TipoCreditos" />
+    <EntitySet Name="TipoIdentificacion" EntityType="Self.TipoIdentificacion" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <EntitySet Name="VisitaPagina" EntityType="Self.VisitaPagina" />
+    <AssociationSet Name="FK_Encargados_Provincias" Association="Self.FK_Encargados_Provincias">
+      <End Role="Provincias" EntitySet="Provincias" />
+      <End Role="Encargados" EntitySet="Encargados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Encargados_Roles" Association="Self.FK_Encargados_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Encargados" EntitySet="Encargados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TipoCambio_Encargados" Association="Self.FK_TipoCambio_Encargados">
+      <End Role="Encargados" EntitySet="Encargados" />
+      <End Role="TipoCambio" EntitySet="TipoCambio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RecepcionSolicitudes_EstadoSolicitud" Association="Self.FK_RecepcionSolicitudes_EstadoSolicitud">
+      <End Role="EstadoSolicitud" EntitySet="EstadoSolicitud" />
+      <End Role="RecepcionSolicitudes" EntitySet="RecepcionSolicitudes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PosicionPagina_TipoCreditos" Association="Self.FK_PosicionPagina_TipoCreditos">
+      <End Role="TipoCreditos" EntitySet="TipoCreditos" />
+      <End Role="PosicionPagina" EntitySet="PosicionPagina" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PosicionPagina_Usuario" Association="Self.FK_PosicionPagina_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="PosicionPagina" EntitySet="PosicionPagina" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Provincias" Association="Self.FK_Usuario_Provincias">
+      <End Role="Provincias" EntitySet="Provincias" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RecepcionSolicitudes_SolicitudCredito" Association="Self.FK_RecepcionSolicitudes_SolicitudCredito">
+      <End Role="SolicitudCredito" EntitySet="SolicitudCredito" />
+      <End Role="RecepcionSolicitudes" EntitySet="RecepcionSolicitudes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SolicitudCredito_TipoCreditos" Association="Self.FK_SolicitudCredito_TipoCreditos">
+      <End Role="TipoCreditos" EntitySet="TipoCreditos" />
+      <End Role="SolicitudCredito" EntitySet="SolicitudCredito" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SolicitudCredito_TipoIdentificacion" Association="Self.FK_SolicitudCredito_TipoIdentificacion">
+      <End Role="TipoIdentificacion" EntitySet="TipoIdentificacion" />
+      <End Role="SolicitudCredito" EntitySet="SolicitudCredito" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tendencias_TipoCreditos" Association="Self.FK_Tendencias_TipoCreditos">
+      <End Role="TipoCreditos" EntitySet="TipoCreditos" />
+      <End Role="Tendencias" EntitySet="Tendencias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VisitaPagina_TipoCreditos" Association="Self.FK_VisitaPagina_TipoCreditos">
+      <End Role="TipoCreditos" EntitySet="TipoCreditos" />
+      <End Role="VisitaPagina" EntitySet="VisitaPagina" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_TipoIdentificacion" Association="Self.FK_Usuario_TipoIdentificacion">
+      <End Role="TipoIdentificacion" EntitySet="TipoIdentificacion" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

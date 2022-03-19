@@ -1,0 +1,12 @@
+E:\Andrey\Documents\sitios\Cuatri2022\ProyectoBank\CapaDatos\bin\Debug\CapaDatos.dll.config
+E:\Andrey\Documents\sitios\Cuatri2022\ProyectoBank\CapaDatos\bin\Debug\CapaDatos.dll
+E:\Andrey\Documents\sitios\Cuatri2022\ProyectoBank\CapaDatos\bin\Debug\CapaDatos.pdb
+E:\Andrey\Documents\sitios\Cuatri2022\ProyectoBank\CapaDatos\bin\Debug\EntityFramework.dll
+E:\Andrey\Documents\sitios\Cuatri2022\ProyectoBank\CapaDatos\bin\Debug\EntityFramework.SqlServer.dll
+E:\Andrey\Documents\sitios\Cuatri2022\ProyectoBank\CapaDatos\bin\Debug\EntityFramework.xml
+E:\Andrey\Documents\sitios\Cuatri2022\ProyectoBank\CapaDatos\bin\Debug\EntityFramework.SqlServer.xml
+E:\Andrey\Documents\sitios\Cuatri2022\ProyectoBank\CapaDatos\obj\Debug\CapaDatos.csproj.AssemblyReference.cache
+E:\Andrey\Documents\sitios\Cuatri2022\ProyectoBank\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileInputs.cache
+E:\Andrey\Documents\sitios\Cuatri2022\ProyectoBank\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
+E:\Andrey\Documents\sitios\Cuatri2022\ProyectoBank\CapaDatos\obj\Debug\CapaDatos.dll
+E:\Andrey\Documents\sitios\Cuatri2022\ProyectoBank\CapaDatos\obj\Debug\CapaDatos.pdb

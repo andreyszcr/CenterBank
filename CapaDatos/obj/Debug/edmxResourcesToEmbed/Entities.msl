@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CentroBankModelStoreContainer" CdmEntityContainer="CentroBankEntities">
+    <EntitySetMapping Name="Encargados">
+      <EntityTypeMapping TypeName="CentroBankModel.Encargados">
+        <MappingFragment StoreEntitySet="Encargados">
+          <ScalarProperty Name="IdEncargado" ColumnName="IdEncargado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Nacimiento" ColumnName="Nacimiento" />
+          <ScalarProperty Name="Nacionalidad" ColumnName="Nacionalidad" />
+          <ScalarProperty Name="IdProvincia" ColumnName="IdProvincia" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstadoSolicitud">
+      <EntityTypeMapping TypeName="CentroBankModel.EstadoSolicitud">
+        <MappingFragment StoreEntitySet="EstadoSolicitud">
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PosicionPagina">
+      <EntityTypeMapping TypeName="CentroBankModel.PosicionPagina">
+        <MappingFragment StoreEntitySet="PosicionPagina">
+          <ScalarProperty Name="IdPosicion" ColumnName="IdPosicion" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="TipoCreditos" ColumnName="TipoCreditos" />
+          <ScalarProperty Name="Posicionamiento" ColumnName="Posicionamiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Provincias">
+      <EntityTypeMapping TypeName="CentroBankModel.Provincias">
+        <MappingFragment StoreEntitySet="Provincias">
+          <ScalarProperty Name="IdProvincia" ColumnName="IdProvincia" />
+          <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RecepcionSolicitudes">
+      <EntityTypeMapping TypeName="CentroBankModel.RecepcionSolicitudes">
+        <MappingFragment StoreEntitySet="RecepcionSolicitudes">
+          <ScalarProperty Name="IdRecepcion" ColumnName="IdRecepcion" />
+          <ScalarProperty Name="IDSolicitud" ColumnName="IDSolicitud" />
+          <ScalarProperty Name="IDEncargado" ColumnName="IDEncargado" />
+          <ScalarProperty Name="FechaRevision" ColumnName="FechaRevision" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="CentroBankModel.Roles">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="Rol" ColumnName="Rol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SolicitudCredito">
+      <EntityTypeMapping TypeName="CentroBankModel.SolicitudCredito">
+        <MappingFragment StoreEntitySet="SolicitudCredito">
+          <ScalarProperty Name="IDSolicitud" ColumnName="IDSolicitud" />
+          <ScalarProperty Name="IdTipoIdentificacion" ColumnName="IdTipoIdentificacion" />
+          <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="IdTipoCreditos" ColumnName="IdTipoCreditos" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tendencias">
+      <EntityTypeMapping TypeName="CentroBankModel.Tendencias">
+        <MappingFragment StoreEntitySet="Tendencias">
+          <ScalarProperty Name="IDTendencia" ColumnName="IDTendencia" />
+          <ScalarProperty Name="tendencia" ColumnName="tendencia" />
+          <ScalarProperty Name="IdTipoCreditos" ColumnName="IdTipoCreditos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoCambio">
+      <EntityTypeMapping TypeName="CentroBankModel.TipoCambio">
+        <MappingFragment StoreEntitySet="TipoCambio">
+          <ScalarProperty Name="IdTipoCambio" ColumnName="IdTipoCambio" />
+          <ScalarProperty Name="Moneda" ColumnName="Moneda" />
+          <ScalarProperty Name="Compra" ColumnName="Compra" />
+          <ScalarProperty Name="Venta" ColumnName="Venta" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="IdEncargado" ColumnName="IdEncargado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoCreditos">
+      <EntityTypeMapping TypeName="CentroBankModel.TipoCreditos">
+        <MappingFragment StoreEntitySet="TipoCreditos">
+          <ScalarProperty Name="IdTipoCreditos" ColumnName="IdTipoCreditos" />
+          <ScalarProperty Name="TipoCreditos1" ColumnName="TipoCreditos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoIdentificacion">
+      <EntityTypeMapping TypeName="CentroBankModel.TipoIdentificacion">
+        <MappingFragment StoreEntitySet="TipoIdentificacion">
+          <ScalarProperty Name="IdTipoIdentificacion" ColumnName="IdTipoIdentificacion" />
+          <ScalarProperty Name="TipoIdentificacion1" ColumnName="TipoIdentificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="CentroBankModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdTipoIdentificacion" ColumnName="IdTipoIdentificacion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Nacimiento" ColumnName="Nacimiento" />
+          <ScalarProperty Name="Nacionalidad" ColumnName="Nacionalidad" />
+          <ScalarProperty Name="IdProvincia" ColumnName="IdProvincia" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VisitaPagina">
+      <EntityTypeMapping TypeName="CentroBankModel.VisitaPagina">
+        <MappingFragment StoreEntitySet="VisitaPagina">
+          <ScalarProperty Name="IDvisita" ColumnName="IDvisita" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="IdTipoCreditos" ColumnName="IdTipoCreditos" />
+          <ScalarProperty Name="CantidadVisitada" ColumnName="CantidadVisitada" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

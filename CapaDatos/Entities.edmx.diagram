@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1c532c9b0d354163b4a9b11e8495d9da" Name="Diagram1">
+        <EntityTypeShape EntityType="CentroBankModel.Encargados" Width="1.5" PointX="5.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CentroBankModel.EstadoSolicitud" Width="1.5" PointX="6" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CentroBankModel.PosicionPagina" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CentroBankModel.Provincias" Width="1.5" PointX="1.5" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="CentroBankModel.RecepcionSolicitudes" Width="1.5" PointX="8.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="CentroBankModel.Roles" Width="1.5" PointX="3.5" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CentroBankModel.SolicitudCredito" Width="1.5" PointX="6" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CentroBankModel.Tendencias" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CentroBankModel.TipoCambio" Width="1.5" PointX="8" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CentroBankModel.TipoCreditos" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CentroBankModel.TipoIdentificacion" Width="1.5" PointX="1.5" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CentroBankModel.Usuario" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CentroBankModel.VisitaPagina" Width="1.5" PointX="3" PointY="14.375" IsExpanded="true" />
+        <AssociationConnector Association="CentroBankModel.FK_Encargados_Provincias" ManuallyRouted="false" />
+        <AssociationConnector Association="CentroBankModel.FK_Encargados_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="CentroBankModel.FK_TipoCambio_Encargados" ManuallyRouted="false" />
+        <AssociationConnector Association="CentroBankModel.FK_RecepcionSolicitudes_EstadoSolicitud" ManuallyRouted="false" />
+        <AssociationConnector Association="CentroBankModel.FK_PosicionPagina_TipoCreditos" ManuallyRouted="false" />
+        <AssociationConnector Association="CentroBankModel.FK_PosicionPagina_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="CentroBankModel.FK_Usuario_Provincias" ManuallyRouted="false" />
+        <AssociationConnector Association="CentroBankModel.FK_RecepcionSolicitudes_SolicitudCredito" ManuallyRouted="false" />
+        <AssociationConnector Association="CentroBankModel.FK_SolicitudCredito_TipoCreditos" ManuallyRouted="false" />
+        <AssociationConnector Association="CentroBankModel.FK_SolicitudCredito_TipoIdentificacion" ManuallyRouted="false" />
+        <AssociationConnector Association="CentroBankModel.FK_Tendencias_TipoCreditos" ManuallyRouted="false" />
+        <AssociationConnector Association="CentroBankModel.FK_VisitaPagina_TipoCreditos" ManuallyRouted="false" />
+        <AssociationConnector Association="CentroBankModel.FK_Usuario_TipoIdentificacion" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
